@@ -6,8 +6,7 @@ import { SmoothScroll } from "@/components/SmoothScroll";
 import { Footer } from "@/components/Footer";
 import { projects, getProject } from "@/lib/projects";
 
-export default function ProjectPage({ params }: { params: { slug: string } }) {
-  const { slug } = params;
+export default function ProjectPage({ slug }: { slug: string }) {
   const project = getProject(slug);
   if (!project) notFound();
 
