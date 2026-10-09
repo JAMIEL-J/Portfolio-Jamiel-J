@@ -1,0 +1,2 @@
+# Cloudflare Pages — redirect www to apex
+https://www.jamiel-j.me/* https://jamiel-j.me/:splat 301
