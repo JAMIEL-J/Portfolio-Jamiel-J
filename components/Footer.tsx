@@ -112,13 +112,30 @@ export function Footer() {
         </p>
       </div>
 
-      {/* statement card — follows the cursor, takes no layout space */}
+      {/* Mobile static statement card */}
+      <div className="mx-auto mt-10 max-w-6xl md:hidden">
+        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-md">
+          <p className="font-display text-[20px] leading-[1.3] tracking-tight text-white">
+            Let&apos;s create something worth remembering.
+          </p>
+          <div className="mt-8 flex flex-col gap-2 font-manrope text-[12.5px] text-white/60 sm:flex-row sm:items-center sm:justify-between">
+            <p>
+              Based in <span className="font-normal text-white">{site.location}</span>
+            </p>
+            <div className="text-amber-300/90">
+              <LiveClock />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Desktop statement card — follows cursor */}
       <AnimatePresence>
         {hover && (
           <motion.div
             key="card"
             style={{ x: fx, y: fy }}
-            className="pointer-events-none fixed left-0 top-0 z-40 will-change-transform"
+            className="pointer-events-none fixed left-0 top-0 z-40 hidden will-change-transform md:block"
           >
             <div className="-translate-x-1/2 -translate-y-[112%]">
               <motion.div
@@ -150,14 +167,14 @@ export function Footer() {
         whileInView={{ y: 0, opacity: 1 }}
         viewport={{ once: true, margin: "-10% 0px" }}
         transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
-        className="font-display pointer-events-none mt-10 select-none whitespace-nowrap text-center uppercase leading-[0.85] tracking-[-0.045em] text-white/[0.13]"
-        style={{ fontSize: `${Math.min(20, 145 / site.fullName.length)}vw` }}
+        className="font-display pointer-events-none mt-10 select-none whitespace-nowrap text-center uppercase leading-[0.85] tracking-[-0.03em] sm:tracking-[-0.045em] text-white/[0.13]"
+        style={{ fontSize: "clamp(3rem, 15vw, 18vw)" }}
       >
         {site.fullName}
       </motion.h2>
 
       {/* credits */}
-      <div className="mx-auto mt-4 flex max-w-6xl items-center justify-between px-2 font-manrope text-[11.5px] text-white/40">
+      <div className="mx-auto mt-4 flex max-w-6xl flex-col items-center justify-between gap-2 px-2 text-center font-manrope text-[11.5px] text-white/40 sm:flex-row sm:text-left">
         <p>
           Designed in Next.js by <span className="text-white/70">Jamiel</span>
         </p>

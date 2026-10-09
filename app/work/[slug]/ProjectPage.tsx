@@ -31,22 +31,23 @@ function Meta({ label, value }: { label: string; value: string }) {
       <section className="relative h-[100svh] overflow-hidden">
         <a
           href="/work"
-          className="group absolute left-4 top-20 z-20 inline-flex items-center gap-2 rounded-full border border-white/[0.12] bg-[rgba(15,15,15,0.6)] px-4 py-2 font-manrope text-[13px] text-white/85 backdrop-blur-[12px] transition hover:bg-[#f4f1ea] hover:text-black sm:left-10"
+          className="group absolute left-4 top-16 z-30 inline-flex items-center gap-2 rounded-full border border-white/[0.15] bg-black/60 px-3.5 py-1.5 font-manrope text-[12px] text-white/90 shadow-lg backdrop-blur-[14px] transition hover:bg-[#f4f1ea] hover:text-black sm:top-20 sm:left-10 sm:px-4 sm:py-2 sm:text-[13px]"
         >
           <span aria-hidden="true" className="inline-block transition-transform duration-300 group-hover:-translate-x-1">←</span> All projects
         </a>
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={project.img} alt={project.title} style={{ objectPosition: project.align ?? "50% 50%" }} className="absolute inset-0 h-full w-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent sm:via-transparent" />
         <motion.div
           initial={{ y: 60, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1], delay: 0.2 }}
-          className="absolute bottom-6 left-4 w-[min(92vw,640px)] rounded-2xl border border-white/[0.12] bg-gradient-to-br from-[rgba(15,15,15,0.78)] via-[rgba(15,15,15,0.62)] to-[#1c2a34]/80 p-7 shadow-[0_8px_32px_0_rgba(0,0,0,0.15)] backdrop-blur-[12px] backdrop-saturate-[1.8] sm:left-10 sm:p-9"
+          className="absolute bottom-6 left-4 right-4 max-w-xl rounded-2xl border border-white/[0.12] bg-gradient-to-br from-[rgba(15,15,15,0.85)] via-[rgba(15,15,15,0.7)] to-[#1c2a34]/80 p-5 shadow-[0_8px_32px_0_rgba(0,0,0,0.35)] backdrop-blur-[14px] backdrop-saturate-[1.8] sm:left-10 sm:right-auto sm:p-9"
         >
-          <h1 className="font-display text-[44px] leading-none tracking-tight text-white sm:text-[52px]">
+          <h1 className="font-display text-[30px] leading-tight tracking-tight text-white sm:text-[48px] sm:leading-none">
             {project.title}
           </h1>
-          <p className="mt-4 font-manrope text-[14.5px] font-light leading-[1.6] text-white/75">
+          <p className="mt-2.5 font-manrope text-[13px] font-light leading-relaxed text-white/80 sm:mt-4 sm:text-[14.5px]">
             {project.desc}
           </p>
         </motion.div>

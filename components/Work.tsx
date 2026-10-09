@@ -84,12 +84,37 @@ export function ProjectSection({
         <img src={img} alt={title} style={{ objectPosition: "50% 0%" }} className="h-full w-full object-cover" />
       </motion.div>
 
-      {/* cursor-following details card — only while mouse is in section */}
+      {/* Mobile-visible bottom overlay card (Static indicator on touch devices) */}
+      <div className="absolute inset-x-4 bottom-8 z-20 md:hidden">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="rounded-2xl border border-white/15 bg-black/80 p-5 shadow-[0_8px_32px_rgba(0,0,0,0.5)] backdrop-blur-xl"
+        >
+          <div className="flex items-center justify-between">
+            <span className="rounded-full border border-white/15 bg-white/10 px-2.5 py-0.5 font-manrope text-[11px] text-white/80">
+              {index}
+            </span>
+            <span className="font-manrope text-[11px] font-medium text-amber-300">
+              View Project →
+            </span>
+          </div>
+          <h3 className="font-display mt-2 text-[20px] font-semibold tracking-tight text-white">
+            {title}
+          </h3>
+          <p className="mt-1 line-clamp-2 font-manrope text-[12.5px] font-light leading-snug text-white/70">
+            {desc}
+          </p>
+        </motion.div>
+      </div>
+
+      {/* Desktop cursor-following details card */}
       <AnimatePresence>
         {hover && (
           <motion.div
             style={{ x: fx, y: fy }}
-            className="pointer-events-none fixed left-0 top-0 z-30 will-change-transform"
+            className="pointer-events-none fixed left-0 top-0 z-30 hidden will-change-transform md:block"
           >
             <div className="-translate-x-1/2 -translate-y-[112%]">
               <motion.div
